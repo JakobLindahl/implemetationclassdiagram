@@ -18,11 +18,11 @@ public class ImplemetationClassDiagram {
         
         Program prog = new Program("Java17");
         ProgramCoordinator progCoor = new ProgramCoordinator("Oliver", teacher1);
-        progCoor.addTeacher(teacher2);
-        progCoor.addTeacher(teacher3);
         prog.setProgramCoordinator(progCoor);
         progCoor.setProgram(prog);
         
+        progCoor.addTeacher(teacher2);
+        progCoor.addTeacher(teacher3);
         
         Seminar seminar = new Seminar("Lektion  5", teacher1, prog);
         teacher1.setCurrentSeminar(seminar);
@@ -36,17 +36,10 @@ public class ImplemetationClassDiagram {
         Attendance attendance1 = new Attendance(seminar, student1);
         Attendance attendance2 = new Attendance(seminar, student2);
         Attendance attendance3 = new Attendance(seminar, student3);
+        
         student1.addToAttendance(attendance1);
         student2.addToAttendance(attendance2);
         student3.addToAttendance(attendance3);
-        
-        attendance1.setSeminar(seminar);
-        attendance2.setSeminar(seminar);
-        attendance3.setSeminar(seminar);
-        
-        attendance1.setStudent(student1);
-        attendance2.setStudent(student2);
-        attendance3.setStudent(student3);
         
         seminar.addAttendance(attendance1);
         seminar.addAttendance(attendance2);
@@ -56,6 +49,8 @@ public class ImplemetationClassDiagram {
         
         student1.attendSeminar(attendance1);
         student1.getSeminarsAttended().forEach(x -> System.out.println(x));
-        System.out.println(seminar.getTeacher());
+        
+        attendance2.registerAttendance(seminar, student1);
+        student2.getSeminarsAttended().forEach(x -> System.out.println(x));
     }
 }

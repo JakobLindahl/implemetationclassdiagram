@@ -30,7 +30,9 @@ public class Student {
     }
     
     public Set<Seminar> getSeminarsAttended(){
-        return attendance.stream().filter(attended -> attended.AttendanceLevel()).map(Attendance::getSeminar).collect(Collectors.toSet());
+        return attendance.stream()
+                .filter(attended -> attended.AttendanceLevel())
+                .map(Attendance::getSeminar).collect(Collectors.toSet());
     }
     
     public void attendSeminar(Attendance attendance){
